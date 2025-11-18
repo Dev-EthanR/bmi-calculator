@@ -13,4 +13,26 @@ html {
 body {
   line-height: 1.5;
   font-size: 1.6rem;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+}
+
+h1, h2, h3 {
+  line-height: 1.1;
+  letter-spacing: -1px;
+  font-weight: 600;
+  color: hsl(215, 31%, 21%);
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 4.8rem;
+}
+
+h2 {
+  font-size: 3.2rem;
+}
+
+h3 {
+  font-size: 2rem;
 }/*# sourceMappingURL=styles.css.map */

@@ -14,4 +14,33 @@ html {
 body {
     line-height: 1.5;
     font-size: getFont('sm');
+    font-weight: getFont('regular');
+    font-family: $base-ff;
+}
+
+h1, h2, h3 {
+    line-height: 1.1;
+    letter-spacing: -1px;
+    font-weight: getFont('semi-bold');
+    color: getColor('heading');
+}
+
+h1 {
+    font-weight: getFont('semi-bold');
+    font-size: getFont('2xl');
+    @include screen('desktop') {
+        font-size: getFont('3xl');
+    }
+   
+}
+
+h2 {
+    font-size: getFont('xl');
+    @include screen('desktop') {
+        font-size: getFont('2xl');
+    }
+}
+
+h3 {
+    font-size: getFont('md');
 }
