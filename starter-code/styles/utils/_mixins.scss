@@ -1,0 +1,7 @@
+@use './variables' as *;
+
+@mixin screen($breakpoint, $minMax: min) {
+    @media (#{$minMax}-width: map.get($breakpoints, $breakpoint)) {
+        @content;
+    }
+}

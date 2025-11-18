@@ -1,0 +1,17 @@
+@use '../utils/utils' as *;
+
+*, *::before, ::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    line-height: 1.5;
+    font-size: getFont('sm');
+}
