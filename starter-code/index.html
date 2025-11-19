@@ -14,51 +14,114 @@
     <title>Frontend Mentor | Body Mass Index Calculator</title>
   </head>
   <body>
-    <header>
-      <img src="assets/images/logo.svg" alt="" />
-      <div class="header-text">
-        <h1>
-          Body Mass <br />
-          Index Calculator
-        </h1>
-        <p>
-          Better understand your weight in relation to your height using our
-          body mass index (BM) calculator. While BMI is not the sole determinant
-          of a healthy weight, it offers a valuable starting point to evaluate
-          your overall health and well-being.
-        </p>
+    <header class="hero-container">
+      <div class="hero-header">
+        <img class="logo" src="assets/images/logo.svg" alt="" />
+        <div class="header-text">
+          <h1>
+            Body Mass <br />
+            Index Calculator
+          </h1>
+          <p>
+            Better understand your weight in relation to your height using our
+            body mass index (BM) calculator. While BMI is not the sole
+            determinant of a healthy weight, it offers a valuable starting point
+            to evaluate your overall health and well-being.
+          </p>
+        </div>
       </div>
+
       <div class="calculator-container">
-        <form>
-          <input type="radio" name="measurement" id="" />
-          <input type="radio" name="measurement" id="" />
-          <label for="height">Height</label>
-          <input type="text" name="height" id="height" />
-          <label for="weight">Weight</label>
-          <input type="text" name="weight" id="weight" />
+        <h2>Enter your details below</h2>
+        <form class="bmi-inputs">
+          <div class="input-group">
+            <input
+              type="radio"
+              name="units"
+              id="metric"
+              value="metric"
+              checked
+            />
+            <label for="metric"> Metric </label>
+          </div>
+          <div class="input-group">
+            <input type="radio" name="units" id="imperial" value="imperial" />
+            <label for="imperial"> Imperial </label>
+          </div>
+          <div class="input-group">
+            <label class="text-label" for="height">Height</label>
+            <div class="grid imperial-state">
+              <div class="bmi-input">
+                <input
+                  class="inputBMI"
+                  type="number"
+                  min="0"
+                  name="height"
+                  id="height"
+                  placeholder="0"
+                />
+                <span class="measurement">cm</span>
+              </div>
+              <div class="bmi-input">
+                <input
+                  class="inputBMI"
+                  type="number"
+                  min="0"
+                  name="height"
+                  placeholder="0"
+                  id="imperial-height"
+                />
+                <span class="measurement">in</span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group">
+            <label class="text-label" for="weight">Weight</label>
+            <div class="grid imperial-state">
+              <div class="bmi-input">
+                <input
+                  class="inputBMI"
+                  type="number"
+                  min="0"
+                  name="weight"
+                  id="weight"
+                  placeholder="0"
+                />
+                <span class="measurement">kg</span>
+              </div>
+              <div class="bmi-input">
+                <input
+                  class="inputBMI"
+                  type="number"
+                  min="0"
+                  name="weight"
+                  placeholder="0"
+                  id="imperial-weight"
+                />
+                <span class="measurement">lbs</span>
+              </div>
+            </div>
+          </div>
         </form>
+        <div class="bmi-container">
+          <div class="bmi-heading">
+            <h3 id="BMI-result-heading">Your BMI is...</h3>
+            <span class="result" id="bmiResult">add score</span>
+          </div>
+          <p id="bmi-welcome-text">
+            Enter your height and weight and you’ll see your BMI result here
+          </p>
+          <p id="bmi-result-text">
+            Your BMI suggests you're
+            <span class="classification" id="classification">
+              add classification</span
+            >
+            Your ideal weight is between
+            <span class="weight-range"> add range </span>
+          </p>
+        </div>
       </div>
     </header>
-    <!-- 
-
- 
-
-  Enter your details below
-
-  Metric
-  Imperial
-
-  
-  
-
-  Your BMI is... -->
-
-    <!-- add score -->
-
-    <!--Your BMI suggests you're  -->
-    <!-- add classification -->.
-    <!--Your ideal weight is between -->
-    <!-- add range -->.
     <!-- 
   What your BMI result means
 
@@ -108,5 +171,6 @@
   Certain health concerns may affect individuals of some Black and Asian origins at 
   lower BMIs than others. To learn more, it is advised to discuss this with your 
   GP or practice nurse. -->
+    <script src="index.js"></script>
   </body>
 </html>

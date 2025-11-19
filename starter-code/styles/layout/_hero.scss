@@ -1,0 +1,226 @@
+@use '../utils/utils' as *;
+
+.hero-container {
+    position: relative;
+    text-align: center;
+    background-image: getColor('gradient-bg');
+    border-radius: 0px 0px 36px 36px;
+    max-width: 1200px;
+    @include screen("desktop") {
+        text-align: left;
+        margin-right: 25%;
+    }
+    @include screen("large-desktop") {
+        margin-right: 20%;
+    }
+    .hero-header {
+        width: 100%;
+        padding: 2.4rem;
+        padding-bottom: 20rem;
+        @include flex;
+        @include screen("desktop") {
+            align-items: flex-start;
+            padding-left: 5rem;
+            padding-top: 6rem;
+        }
+        @include screen("large-desktop") {
+            padding-left: 15%;
+        }
+    }
+    .logo {
+        width: 3.6rem;
+        height: 3.6rem;
+        margin-bottom: 3.2rem;
+    }
+    .header-text {
+        align-items: center;
+       
+        h1 {
+             margin-bottom: $margin-bottom;
+        }
+        p {
+            margin-bottom: 4.2rem;
+        }
+        @include screen("large-desktop", max) {
+            p {
+                max-width: 440px
+            }
+        }
+        @include screen("desktop") {
+            max-width: 460px;
+        }
+    }
+}
+
+.calculator-container {
+    text-align: left;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -0%);
+    width: 90%;
+    border-radius: $border-radius;
+    box-shadow: getColor('shadow');
+    background-color: getColor('bg');
+    padding: 2.4rem;
+    @include screen("desktop") {
+        width: 100%;
+        top: 10%;
+        left: 100%;
+        max-width: 550px;
+    }
+    h2 {
+        text-align: center;
+        font-size: getFont('lg');
+        margin-bottom: $margin-bottom;
+        @include screen("tablet") {
+            text-align: left;
+        }
+    }
+    @mixin noColumn {
+        > :nth-child(n+3) {
+                    grid-column: 1 / -1;                 
+        }
+    }
+    .bmi-inputs {
+         display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 1.6rem;
+        &:has(.no-grid) {
+           @include noColumn;
+        }
+        @include screen("tablet", max) {
+            @include noColumn;
+        }
+            
+    //    Radio buttons
+        .input-group input[type="radio"] {
+            border: 1px solid getColor('input-border');
+            border-radius: 50%; 
+            width: 31px;
+            height: 31px;
+            appearance: none; 
+            -webkit-appearance: none;
+            outline: none; 
+            cursor: pointer;
+            &~label {
+                color: getColor('heading');
+                font-weight: getFont('semi-bold');
+                margin-left: 1rem;
+                font-size: getFont('sm');
+            }
+            &:checked {
+                background-color: getColor('primary');
+                border: 8px solid getColor('blue-100'); 
+            }
+            &:hover, &:focus-visible {
+                outline: 1px solid getColor('primary'); 
+            }
+        }       
+        .input-group:not(.input-group:has(input[type=number])) {
+            display: flex;
+            align-items: center;
+            margin-bottom: $margin-bottom;
+            
+        }
+        // Text Input
+       .input-group:has(input[type=number])  {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: $margin-bottom;
+       }
+        .text-label {
+            color: getColor('grey-500');
+            font-weight: getFont('regular');
+            font-size: getFont('xs');
+            margin-bottom: 1rem;
+        }
+        .input-group {
+            input[type=number] {
+            border: none;
+            outline: none;
+            color: getColor('heading');
+            font-weight: getFont('semi-bold');
+            font-size: getFont('lg');
+            width: 90%;
+            
+            }
+            .grid input[type=number] {
+                width: 80%;
+            }
+           
+            
+            
+        }
+        .bmi-input {
+            margin-bottom: 1.6rem;
+            position: relative;
+            border: 1px solid getColor('input-border');
+            border-radius: 12px;
+            padding: 2.4rem;
+            &:hover {
+                outline: 1px solid getColor('primary');
+                cursor: pointer;
+            }
+            &:focus {
+                border: 1px solid getColor('primary');
+            }
+            .measurement {
+                position: absolute;
+                color: getColor('primary');
+                font-size: getFont('lg');
+                font-weight: getFont('semi-bold');
+                right: 5%;
+            }
+        }
+       
+    }
+}
+
+.bmi-container {
+    position: relative;
+    color: getColor('white');
+    text-align: left;
+    font-weight: getFont('regular');
+    font-size: getFont('xs');
+    background-color: getColor('primary');
+    padding: 3.2rem;
+    width: 100%;
+    border-radius: $border-radius;
+    @include screen("tablet") {
+        display: flex;
+        align-items: center;
+        gap: 6rem;
+        justify-content: space-between;
+        border-top-right-radius: 150px;
+        border-bottom-right-radius: 150px;
+       .bmi-heading {
+           white-space: nowrap;
+       }
+    }
+    h3 {
+        color: inherit;
+        font-weight: getFont('semi-bold');
+        line-height: inherit;
+        letter-spacing: inherit;
+        font-size: getFont('sm');
+    }
+    .result {
+            font-weight: getFont('semi-bold');
+            font-size: getFont('2xl');
+            margin-bottom: $margin-bottom;
+    }
+    p {
+        max-width: 270px;    
+        .weight-range {
+            font-weight: getFont('bold');
+        }
+    }
+    
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6rem;
+}

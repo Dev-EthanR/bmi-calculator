@@ -28,11 +28,251 @@ h1 {
   font-weight: 600;
   font-size: 4.8rem;
 }
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 6.4rem;
+  }
+}
 
 h2 {
   font-size: 3.2rem;
 }
+@media (min-width: 1024px) {
+  h2 {
+    font-size: 4.8rem;
+  }
+}
 
 h3 {
   font-size: 2rem;
+}
+
+.hero-container {
+  position: relative;
+  text-align: center;
+  background-image: linear-gradient(to right, hsla(183, 95%, 92%, 0.3), hsl(216, 95%, 92%));
+  border-radius: 0px 0px 36px 36px;
+  max-width: 1200px;
+}
+@media (min-width: 1024px) {
+  .hero-container {
+    text-align: left;
+    margin-right: 25%;
+  }
+}
+@media (min-width: 1250px) {
+  .hero-container {
+    margin-right: 20%;
+  }
+}
+.hero-container .hero-header {
+  width: 100%;
+  padding: 2.4rem;
+  padding-bottom: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 1024px) {
+  .hero-container .hero-header {
+    align-items: flex-start;
+    padding-left: 5rem;
+    padding-top: 6rem;
+  }
+}
+@media (min-width: 1250px) {
+  .hero-container .hero-header {
+    padding-left: 15%;
+  }
+}
+.hero-container .logo {
+  width: 3.6rem;
+  height: 3.6rem;
+  margin-bottom: 3.2rem;
+}
+.hero-container .header-text {
+  align-items: center;
+}
+.hero-container .header-text h1 {
+  margin-bottom: 2.4rem;
+}
+.hero-container .header-text p {
+  margin-bottom: 4.2rem;
+}
+@media (max-width: 1250px) {
+  .hero-container .header-text p {
+    max-width: 440px;
+  }
+}
+@media (min-width: 1024px) {
+  .hero-container .header-text {
+    max-width: 460px;
+  }
+}
+
+.calculator-container {
+  text-align: left;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 90%;
+  border-radius: 16px;
+  box-shadow: 0px 0px 4px hsla(215, 43%, 77%, 0.4);
+  background-color: #fff;
+  padding: 2.4rem;
+}
+@media (min-width: 1024px) {
+  .calculator-container {
+    width: 100%;
+    top: 10%;
+    left: 100%;
+    max-width: 550px;
+  }
+}
+.calculator-container h2 {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 2.4rem;
+}
+@media (min-width: 600px) {
+  .calculator-container h2 {
+    text-align: left;
+  }
+}
+.calculator-container .bmi-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  -moz-column-gap: 1.6rem;
+       column-gap: 1.6rem;
+}
+.calculator-container .bmi-inputs:has(.no-grid) > :nth-child(n+3) {
+  grid-column: 1/-1;
+}
+@media (max-width: 600px) {
+  .calculator-container .bmi-inputs > :nth-child(n+3) {
+    grid-column: 1/-1;
+  }
+}
+.calculator-container .bmi-inputs .input-group input[type=radio] {
+  border: 1px solid hsl(215, 17%, 45%);
+  border-radius: 50%;
+  width: 31px;
+  height: 31px;
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+.calculator-container .bmi-inputs .input-group input[type=radio] ~ label {
+  color: hsl(215, 31%, 21%);
+  font-weight: 600;
+  margin-left: 1rem;
+  font-size: 1.6rem;
+}
+.calculator-container .bmi-inputs .input-group input[type=radio]:checked {
+  background-color: hsl(227, 92%, 58%);
+  border: 8px solid hsl(228, 94%, 94%);
+}
+.calculator-container .bmi-inputs .input-group input[type=radio]:hover, .calculator-container .bmi-inputs .input-group input[type=radio]:focus-visible {
+  outline: 1px solid hsl(227, 92%, 58%);
+}
+.calculator-container .bmi-inputs .input-group:not(.input-group:has(input[type=number])) {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2.4rem;
+}
+.calculator-container .bmi-inputs .input-group:has(input[type=number]) {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2.4rem;
+}
+.calculator-container .bmi-inputs .text-label {
+  color: hsl(215, 17%, 45%);
+  font-weight: 400;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+.calculator-container .bmi-inputs .input-group input[type=number] {
+  border: none;
+  outline: none;
+  color: hsl(215, 31%, 21%);
+  font-weight: 600;
+  font-size: 2.4rem;
+  width: 90%;
+}
+.calculator-container .bmi-inputs .input-group .grid input[type=number] {
+  width: 80%;
+}
+.calculator-container .bmi-inputs .bmi-input {
+  margin-bottom: 1.6rem;
+  position: relative;
+  border: 1px solid hsl(215, 17%, 45%);
+  border-radius: 12px;
+  padding: 2.4rem;
+}
+.calculator-container .bmi-inputs .bmi-input:hover {
+  outline: 1px solid hsl(227, 92%, 58%);
+  cursor: pointer;
+}
+.calculator-container .bmi-inputs .bmi-input:focus {
+  border: 1px solid hsl(227, 92%, 58%);
+}
+.calculator-container .bmi-inputs .bmi-input .measurement {
+  position: absolute;
+  color: hsl(227, 92%, 58%);
+  font-size: 2.4rem;
+  font-weight: 600;
+  right: 5%;
+}
+
+.bmi-container {
+  position: relative;
+  color: #fff;
+  text-align: left;
+  font-weight: 400;
+  font-size: 1.4rem;
+  background-color: hsl(227, 92%, 58%);
+  padding: 3.2rem;
+  width: 100%;
+  border-radius: 16px;
+}
+@media (min-width: 600px) {
+  .bmi-container {
+    display: flex;
+    align-items: center;
+    gap: 6rem;
+    justify-content: space-between;
+    border-top-right-radius: 150px;
+    border-bottom-right-radius: 150px;
+  }
+  .bmi-container .bmi-heading {
+    white-space: nowrap;
+  }
+}
+.bmi-container h3 {
+  color: inherit;
+  font-weight: 600;
+  line-height: inherit;
+  letter-spacing: inherit;
+  font-size: 1.6rem;
+}
+.bmi-container .result {
+  font-weight: 600;
+  font-size: 4.8rem;
+  margin-bottom: 2.4rem;
+}
+.bmi-container p {
+  max-width: 270px;
+}
+.bmi-container p .weight-range {
+  font-weight: 700;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.6rem;
 }/*# sourceMappingURL=styles.css.map */

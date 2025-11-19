@@ -1,7 +1,14 @@
 @use './variables' as *;
-
+@use 'sass:map';
 @mixin screen($breakpoint, $minMax: min) {
     @media (#{$minMax}-width: map.get($breakpoints, $breakpoint)) {
         @content;
     }
+}
+
+@mixin flex() {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
