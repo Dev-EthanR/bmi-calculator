@@ -30,6 +30,7 @@ const BMI = {
 changeUnitDisplay(BMI_State.unit);
 setDefaultResultScreen(mainHeight, mainWeight);
 
+// change the state between metric and imperial
 unitsSelected.forEach(radio => {
     radio.addEventListener('change', function() {
         if(this.checked) {
@@ -40,6 +41,7 @@ unitsSelected.forEach(radio => {
     })
 });
 
+// change the UI display on the unit selected
 function changeUnitDisplay(unitOfMeasurement) {
     const isImperial = unitOfMeasurement === 'imperial';
     const imperialElements = document.querySelectorAll('.imperial-state');
@@ -59,6 +61,7 @@ function changeUnitDisplay(unitOfMeasurement) {
     updateBMIInputValue(isImperial)
 }
 
+// convert current inputs based on the unit
 function updateBMIInputValue(isImperial) {
     const [mainHeight, subHeight, mainWeight, subWeight] = document.querySelectorAll(".inputBMI");
     if(!isImperial && mainHeight.value) {
@@ -86,6 +89,7 @@ function updateBMIInputValue(isImperial) {
     }
 }
 
+// show default screen when no value is entered
 function setDefaultResultScreen(...filledInputs) {
     const isValid = filledInputs.every(input => input.value)
     document.getElementById('BMI-result-heading').textContent = isValid ? 'Your BMI is...' : ''
@@ -93,6 +97,8 @@ function setDefaultResultScreen(...filledInputs) {
     document.getElementById('bmi-welcome-text').style.display =  isValid ?  'none' : 'block';
     document.getElementById('bmi-result-text').style.display = isValid ? 'block' : 'none';
 }
+
+// input fields BMI
 document.querySelectorAll('input[name="weight"], input[name="height"]').forEach(input => {
     input.addEventListener('input', function() {
         const unitType = this.name === 'weight' ? 'weight' : 'height'
@@ -101,6 +107,7 @@ document.querySelectorAll('input[name="weight"], input[name="height"]').forEach(
     });
 });
 
+// set the BMI value to the BMI object
 function setBMIValues(input, bmiInput){
     if(!bmiInput in BMI_State) return 
     const index  = input.id === `imperial-${bmiInput}` ? 1 : 0;
@@ -108,6 +115,7 @@ function setBMIValues(input, bmiInput){
     calculateBMI()
 }
 
+// Calculate BMI result
 function calculateBMI() {
     let bmiResult;
     if(BMI_State.unit === 'metric'){
