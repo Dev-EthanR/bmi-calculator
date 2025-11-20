@@ -1,14 +1,14 @@
-// TODO add range  Your ideal weight is between (63.3kgs - 85.2kgs etc).
-
 const unitsSelected = document.querySelectorAll('input[type="radio"][name="units"]');
 const bmiResultElement = document.getElementById('bmiResult');
 const classificationElement = document.getElementById('classification');
+const weightRangeElement = document.getElementById('weightRange');
 const [mainHeight, subHeight, mainWeight, subWeight] = document.querySelectorAll(".inputBMI");
 
 const BMI_State = {
     height: [0, 0],
     weight: [ 0, 0],
-    unit: 'metric'
+    unit: 'metric',
+    idealWeight: [min = 0, max = 0]
 }
 const units = {
     imperial: {
@@ -23,7 +23,7 @@ const units = {
 
 const BMI = {
     underweight: 18.5,
-    'healthy weight': 24.9,
+    healthy: 24.9,
     overweight: 29.9,
     obese: 30
 }
@@ -63,23 +63,22 @@ function changeUnitDisplay(unitOfMeasurement) {
 
 // convert current inputs based on the unit
 function updateBMIInputValue(isImperial) {
-    const [mainHeight, subHeight, mainWeight, subWeight] = document.querySelectorAll(".inputBMI");
     if(!isImperial && mainHeight.value) {
-        BMI_State.height[0] = (BMI_State.height.join('.')*30.48).toFixed(2)
-        mainHeight.value = BMI_State.height[0];
+        BMI_State.height[0] = (BMI_State.height.join('.')*30.48).toFixed(2);
+        mainHeight.value = Number(BMI_State.height[0]);
     } 
     if(!isImperial && mainWeight.value) {
-        BMI_State.weight[0] = (BMI_State.weight.join('.')*6.35029).toFixed(2)
-        mainWeight.value = BMI_State.weight[0];
+        BMI_State.weight[0] = (BMI_State.weight.join('.')*6.35029).toFixed(2);
+        mainWeight.value = Number(BMI_State.weight[0]);
     } 
     if(mainHeight.value && isImperial) {
-        const [feet, inches ] = (BMI_State.height[0]/30.48).toFixed(1).split('.');
+        const [feet, inches ] = (Number(BMI_State.height[0])/30.48).toFixed(1).split('.');
         BMI_State.height =  [feet, inches];
         mainHeight.value =  feet;
         subHeight.value =  inches;       
     }
     if(mainWeight.value && isImperial) {
-        const totalPounds = BMI_State.weight[0] * 2.20462
+        const totalPounds = Number(BMI_State.weight[0]) * 2.20462
         const stone =  Math.floor(totalPounds / 14);
         const pounds = Math.round(totalPounds % 14);
         BMI_State.weight = [stone , pounds]
@@ -112,27 +111,40 @@ function setBMIValues(input, bmiInput){
     if(!bmiInput in BMI_State) return 
     const index  = input.id === `imperial-${bmiInput}` ? 1 : 0;
     BMI_State[bmiInput][index] = input.value;
-    calculateBMI()
+    calculateIdealWeight();
+    calculateBMI();
 }
-
+// Calculate Ideal Weight 
+function calculateIdealWeight(){
+    const heightInInches = BMI_State.unit === 'metric' 
+            ? Number(BMI_State.height[0]) / 2.54 
+            : (Number(BMI_State.height[0]) * 12) + Number(BMI_State.height[1]);
+    const minimumWeight = `${(45.5 + 2.2 * (heightInInches - 60)).toFixed(1)}`;
+    const maxmiumWeight = `${(48 + 2.7 * (heightInInches - 60)).toFixed(1)}`;
+    if(BMI_State.unit === 'imperial'){
+        const [minStone, minPound] = ((minimumWeight * 0.157).toFixed(1)).toString().split('.');
+        const [maxStone, maxPound] = ((maxmiumWeight * 0.157).toFixed(1)).toString().split('.');
+        BMI_State.idealWeight = [`${minStone}st ${minPound}lbs`, `${maxStone}st ${maxPound}lbs`]
+    } else BMI_State.idealWeight = [`${minimumWeight}kgs`, `${maxmiumWeight}kgs`];
+}
 // Calculate BMI result
 function calculateBMI() {
     let bmiResult;
     if(BMI_State.unit === 'metric'){
-        const weight = BMI_State.weight[0]
-        const height = BMI_State.height[0] / 100 // to meters
-        bmiResult = (weight / (height ** 2)).toFixed(2)
+        const weight = Number(BMI_State.weight[0])
+        const height = Number(BMI_State.height[0]) / 100 // to meters
+        bmiResult = (weight / (height ** 2)).toFixed(1)
     } else if(BMI_State.unit === 'imperial') {
-        const weight = (BMI_State.weight[0] * 14) + BMI_State?.weight[1]
-        const height = (BMI_State.height[0] * 12) + BMI_State?.height[1]
-        bmiResult = ((weight / (height ** 2)) * 703).toFixed(2)
+        const weight = (Number(BMI_State.weight[0]) * 14) + Number(BMI_State?.weight[1])
+        const height = (Number(BMI_State.height[0]) * 12) + Number(BMI_State?.height[1])
+        bmiResult = ((weight / (height ** 2)) * 703).toFixed(1)
     }
     bmiResultElement.textContent = bmiResult;
     switch(true) {
         case bmiResult < BMI.underweight:
             classification = Object.keys(BMI)[0];
             break;
-          case bmiResult < BMI["healthy weight"]:
+          case bmiResult < BMI.healthy:
             classification = Object.keys(BMI)[1];
             break;
         case bmiResult < BMI.overweight:
@@ -143,4 +155,5 @@ function calculateBMI() {
             break;
     }
     classificationElement.textContent = classification;
+    weightRangeElement.textContent = BMI_State.idealWeight.join(' - ')
 }
