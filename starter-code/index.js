@@ -130,6 +130,7 @@ function calculateIdealWeight(){
 // Calculate BMI result
 function calculateBMI() {
     let bmiResult;
+    let classification;
     if(BMI_State.unit === 'metric'){
         const weight = Number(BMI_State.weight[0])
         const height = Number(BMI_State.height[0]) / 100 // to meters
