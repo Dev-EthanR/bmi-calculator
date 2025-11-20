@@ -64,11 +64,11 @@ function changeUnitDisplay(unitOfMeasurement) {
 // convert current inputs based on the unit
 function updateBMIInputValue(isImperial) {
     if(!isImperial && mainHeight.value) {
-        BMI_State.height[0] = (BMI_State.height.join('.')*30.48).toFixed(2);
+        BMI_State.height[0] = Math.floor((BMI_State.height.join('.')*30.48));
         mainHeight.value = Number(BMI_State.height[0]);
     } 
     if(!isImperial && mainWeight.value) {
-        BMI_State.weight[0] = (BMI_State.weight.join('.')*6.35029).toFixed(2);
+        BMI_State.weight[0] = Math.floor((BMI_State.weight.join('.')*6.35029));
         mainWeight.value = Number(BMI_State.weight[0]);
     } 
     if(mainHeight.value && isImperial) {
