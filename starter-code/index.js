@@ -145,7 +145,7 @@ function calculateBMI() {
             classification = Object.keys(BMI)[0];
             break;
           case bmiResult < BMI.healthy:
-            classification = Object.keys(BMI)[1];
+            classification = "healthy weight"
             break;
         case bmiResult < BMI.overweight:
             classification = Object.keys(BMI)[2];
