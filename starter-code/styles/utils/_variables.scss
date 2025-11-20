@@ -4,6 +4,7 @@
 $base-ff: "Inter", sans-serif;
 $border-radius: 16px;
 $margin-bottom: 2.4rem;
+$base-width: 1200px;
 $color-palette: (
     "white": #fff,
     "black": #000,
@@ -14,12 +15,14 @@ $color-palette: (
     "blue-300": hsl(209, 69%, 82%),
     "blue-100": hsl(228, 94%, 94%),
     "gradient-blue": linear-gradient(to right, hsla(183, 95%, 92%, 0.3), hsla(216, 95%, 92%, 1)),
-    "shadow": 0px 0px 4px hsla(215, 43%, 77%, 0.4)
+    "gradient-blue-opacity": linear-gradient(to right, hsla(183, 95%, 92%, 0.3), hsla(216, 95%, 92%, 0.5)),
+    "shadow": hsla(215, 43%, 77%, 0.4)
 );
 
 
 $colors: (
     "gradient-bg": "gradient-blue",
+    "gradient-opacity-bg": "gradient-blue-opacity",
     "primary": "blue-500",
     "heading": "blue-900",
     "text": "grey-500",

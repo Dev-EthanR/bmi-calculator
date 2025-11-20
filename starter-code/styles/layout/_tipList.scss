@@ -1,0 +1,38 @@
+@use '../utils/utils' as *;
+
+.tip-list-container {
+    max-width: calc($base-width + 20%);
+    margin: 0 auto;
+    background-image: getColor('gradient-opacity-bg');
+    padding: 4rem 2rem;
+    margin-bottom: 6rem;
+    @include screen("desktop") {
+        border-radius: 34px;
+    }
+    .tip-list-content {
+        max-width: $base-width;
+        display: grid;
+        gap: 4rem;
+        .tip-list-icon {
+            margin-bottom: 3.2rem;
+        }
+        h3 {
+            font-size: getFont('lg');
+            margin-bottom: $margin-bottom;
+        }
+        @include screen("desktop", max) {
+            @include screen("tablet") {
+                padding: 2rem;
+                li {
+                    display: flex;
+                    gap: 4rem;
+                }
+            }
+        }
+        @include screen("desktop") {
+            grid-template-columns: repeat(3, 1fr);
+            justify-self: center;
+            padding: 3rem;
+        }
+    }
+}

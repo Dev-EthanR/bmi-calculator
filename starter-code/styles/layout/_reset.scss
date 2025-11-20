@@ -10,12 +10,20 @@ html {
     font-size: 62.5%;
     scroll-behavior: smooth;
 }
+ul {
+    list-style: none;
+}
+
+input {
+    font-family: inherit;
+}
 
 body {
     line-height: 1.5;
     font-size: getFont('sm');
     font-weight: getFont('regular');
     font-family: $base-ff;
+    color: getColor('text');
 }
 
 h1, h2, h3 {

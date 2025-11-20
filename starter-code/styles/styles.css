@@ -10,11 +10,20 @@ html {
   scroll-behavior: smooth;
 }
 
+ul {
+  list-style: none;
+}
+
+input {
+  font-family: inherit;
+}
+
 body {
   line-height: 1.5;
   font-size: 1.6rem;
   font-weight: 400;
   font-family: "Inter", sans-serif;
+  color: hsl(215, 17%, 45%);
 }
 
 h1, h2, h3 {
@@ -53,11 +62,18 @@ h3 {
   background-image: linear-gradient(to right, hsla(183, 95%, 92%, 0.3), hsl(216, 95%, 92%));
   border-radius: 0px 0px 36px 36px;
   max-width: 1200px;
+  margin-bottom: 48rem;
+}
+@media (min-width: 600px) {
+  .hero-container {
+    margin-bottom: 30rem;
+  }
 }
 @media (min-width: 1024px) {
   .hero-container {
     text-align: left;
     margin-right: 25%;
+    margin-bottom: 7rem;
   }
 }
 @media (min-width: 1250px) {
@@ -119,14 +135,14 @@ h3 {
   transform: translate(-50%, 0%);
   width: 90%;
   border-radius: 16px;
-  box-shadow: 0px 0px 4px hsla(215, 43%, 77%, 0.4);
+  box-shadow: 0px 0px 40px hsla(215, 43%, 77%, 0.4);
   background-color: #fff;
   padding: 2.4rem;
 }
 @media (min-width: 1024px) {
   .calculator-container {
     width: 100%;
-    top: 10%;
+    top: 17.5%;
     left: 100%;
     max-width: 550px;
   }
@@ -275,4 +291,210 @@ h3 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.6rem;
+}
+
+.bmi-result-article-container {
+  margin-bottom: 6rem;
+  max-width: 1200px;
+}
+@media (min-width: 600px) {
+  .bmi-result-article-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 600px) and (min-width: 1024px) {
+  .bmi-result-article-container {
+    justify-self: center;
+    gap: 5.2rem;
+  }
+}
+@media (max-width: 1024px) and (min-width: 600px) {
+  .bmi-result-article-container .bmi-img-container {
+    position: relative;
+    overflow: hidden;
+    height: 435px;
+  }
+}
+.bmi-result-article-container .bmi-img-container .bmi-article-image {
+  width: 100%;
+  margin-bottom: 2.4rem;
+}
+@media (max-width: 1024px) and (min-width: 600px) {
+  .bmi-result-article-container .bmi-img-container .bmi-article-image {
+    position: absolute;
+    left: -80px;
+    min-width: 400px;
+    max-width: 454px;
+  }
+}
+@media (min-width: 1024px) {
+  .bmi-result-article-container .bmi-img-container .bmi-article-image {
+    max-width: 564px;
+  }
+}
+.bmi-result-article-container .bmi-article-content {
+  padding: 2.4rem;
+}
+.bmi-result-article-container .bmi-article-content .curved-line {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .bmi-result-article-container .bmi-article-content {
+    position: relative;
+    align-self: center;
+    margin-top: 15%;
+  }
+  .bmi-result-article-container .bmi-article-content .curved-line {
+    position: absolute;
+    display: block;
+    top: -60%;
+    right: 15%;
+  }
+}
+.bmi-result-article-container .bmi-article-content h2 {
+  margin-bottom: 3.2rem;
+}
+
+.tip-list-container {
+  max-width: calc(1200px + 20%);
+  margin: 0 auto;
+  background-image: linear-gradient(to right, hsla(183, 95%, 92%, 0.3), hsla(216, 95%, 92%, 0.5));
+  padding: 4rem 2rem;
+  margin-bottom: 6rem;
+}
+@media (min-width: 1024px) {
+  .tip-list-container {
+    border-radius: 34px;
+  }
+}
+.tip-list-container .tip-list-content {
+  max-width: 1200px;
+  display: grid;
+  gap: 4rem;
+}
+.tip-list-container .tip-list-content .tip-list-icon {
+  margin-bottom: 3.2rem;
+}
+.tip-list-container .tip-list-content h3 {
+  font-size: 2.4rem;
+  margin-bottom: 2.4rem;
+}
+@media (max-width: 1024px) and (min-width: 600px) {
+  .tip-list-container .tip-list-content {
+    padding: 2rem;
+  }
+  .tip-list-container .tip-list-content li {
+    display: flex;
+    gap: 4rem;
+  }
+}
+@media (min-width: 1024px) {
+  .tip-list-container .tip-list-content {
+    grid-template-columns: repeat(3, 1fr);
+    justify-self: center;
+    padding: 3rem;
+  }
+}
+
+.bmi-limitations-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.4rem;
+  height: 750px;
+}
+@media (min-width: 1024px) {
+  .bmi-limitations-container {
+    display: flex;
+    gap: 7rem;
+    position: relative;
+  }
+  .bmi-limitations-container .cards-container .card {
+    position: absolute;
+  }
+  .bmi-limitations-container .cards-container .card#genderCard {
+    right: 100px;
+    top: 60px;
+  }
+  .bmi-limitations-container .cards-container .card#ageCard {
+    top: 310px;
+    right: 350px;
+  }
+  .bmi-limitations-container .cards-container .card#muscleCard {
+    top: 310px;
+    right: -20px;
+  }
+  .bmi-limitations-container .cards-container .card#pregnancyCard {
+    top: 510px;
+    right: 520px;
+  }
+  .bmi-limitations-container .cards-container .card#raceCard {
+    top: 510px;
+    right: 150px;
+  }
+}
+.bmi-limitations-container h2, .bmi-limitations-container .bmi-limitations-sub-heading {
+  text-align: center;
+  margin-bottom: 3.2rem;
+}
+@media (min-width: 600px) {
+  .bmi-limitations-container h2, .bmi-limitations-container .bmi-limitations-sub-heading {
+    max-width: 700px;
+    margin: 0 auto 3.2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .bmi-limitations-container h2, .bmi-limitations-container .bmi-limitations-sub-heading {
+    text-align: left;
+    max-width: 550px;
+  }
+}
+.bmi-limitations-container .bmi-limitations-sub-heading {
+  margin-bottom: 5.6rem;
+}
+.bmi-limitations-container .curved-line {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .bmi-limitations-container .curved-line {
+    display: block;
+    position: absolute;
+    top: 35%;
+    left: 280px;
+  }
+}
+.bmi-limitations-container .cards-container {
+  display: grid;
+  justify-self: center;
+  gap: 1.6rem;
+}
+@media (min-width: 600px) and (max-width: 1024px) {
+  .bmi-limitations-container .cards-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .bmi-limitations-container .cards-container #raceCard {
+    grid-column: span 2;
+    place-self: center;
+  }
+}
+
+.card {
+  padding: 2rem;
+  background-color: #fff;
+  box-shadow: 0 6px 50px hsla(215, 43%, 77%, 0.4);
+  border-radius: 16px;
+}
+@media (min-width: 600px) {
+  .card {
+    max-width: 335px;
+  }
+}
+.card .card-header {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin-bottom: 1.6rem;
+}
+.card#raceCard {
+  margin-bottom: 5rem;
 }/*# sourceMappingURL=styles.css.map */

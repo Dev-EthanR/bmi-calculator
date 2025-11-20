@@ -1,0 +1,60 @@
+@use '../utils/utils' as *;
+
+.bmi-result-article-container {
+    margin-bottom: 6rem;
+    max-width: $base-width;
+    @include screen("tablet") {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        @include screen("desktop") {
+            justify-self: center;
+            gap: 5.2rem;
+        }
+    }
+    .bmi-img-container {
+        @include screen("desktop", max) {
+            @include screen("tablet") {
+                position: relative;
+                overflow: hidden;
+                height: 435px;
+            }
+           
+        }   
+        .bmi-article-image {     
+            width: 100%;
+            margin-bottom: 2.4rem;
+            @include screen("desktop", max) {
+                @include screen("tablet") {
+                    position: absolute;
+                    left: -80px;
+                    min-width: 400px;
+                    max-width: 454px;
+                }
+            }
+            @include screen("desktop") {
+                max-width: 564px;
+            }
+        }
+    }
+    
+    .bmi-article-content {
+        padding: 2.4rem;
+        .curved-line {
+            display: none;
+        }
+        @include screen("desktop") {
+            position: relative;
+            align-self: center;
+            margin-top: 15%;
+             .curved-line {
+                position: absolute;
+                display: block;
+                top: -60%;
+                right: 15%;
+            }
+        }
+        h2 {
+            margin-bottom: 3.2rem;
+        }
+    }
+}

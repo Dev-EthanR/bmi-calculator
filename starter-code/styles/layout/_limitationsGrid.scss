@@ -1,0 +1,94 @@
+@use '../utils/utils' as *;
+.bmi-limitations-container {
+    max-width: $base-width;
+    margin: 0 auto;
+    padding: 2.4rem;
+    height: 750px;
+    @include screen("desktop") {
+        display: flex;
+        gap: 7rem;
+        position: relative;
+        .cards-container .card {
+            position: absolute;
+            &#genderCard {
+                right: 100px;
+                top: 60px;
+            }
+            &#ageCard {
+                top: 310px;
+                right: 350px;
+            }
+            &#muscleCard {
+                top: 310px;
+                right: -20px;
+            }
+            &#pregnancyCard {
+                top: 510px;
+                right: 520px;
+            }
+            &#raceCard {
+                top: 510px;
+                right: 150px;
+            }
+        }
+    }
+    h2, .bmi-limitations-sub-heading {
+        text-align: center;
+        margin-bottom: 3.2rem;
+        @include screen("tablet") {
+            max-width: 700px;
+            margin: 0 auto 3.2rem;
+        }
+        @include screen("desktop") {
+            text-align: left;
+            max-width: 550px;
+        }
+    }
+    .bmi-limitations-sub-heading  {
+        margin-bottom: 5.6rem;
+    }
+    .curved-line {
+        display: none;
+        @include screen("desktop") {
+            display: block;
+            position: absolute;
+            top: 35%;
+            left: 280px;
+        }
+    }
+    .cards-container{
+        display: grid;
+        justify-self: center;
+        gap: 1.6rem;
+        @include screen("tablet") {
+            @include screen("desktop", max) {
+                grid-template-columns: 1fr 1fr;
+                #raceCard {
+                    grid-column: span 2;
+                 place-self: center;
+                }
+            }
+            
+        }
+    }
+}
+
+.card {
+    padding: 2rem;
+    background-color: getColor('white');
+    box-shadow: 0 6px 50px getColor('shadow');
+    border-radius: 16px;
+    @include screen("tablet") {
+        max-width: 335px;
+    }
+    .card-header {
+        display: flex;
+        align-items: center;
+        gap: 1.6rem;
+        margin-bottom: 1.6rem;
+    }
+    &#raceCard {
+        margin-bottom: 5rem;
+    }
+
+}
